@@ -3,10 +3,10 @@
 <div class="container">
 <div class="row">
    <div class="col-sm-6">
-      <app-user-list [users]="users | async"></app-user-list>
+      <app-user-list (selectedDataEmitter)="setSelectedUser($event)" [users]="users | async"></app-user-list>
    </div>
    <div class="col-sm-6">
-     <app-user-form [userDetails]="user" (formValueEmitter)="submitValue($event)"></app-user-form>
+     <app-user-form #userForm [userDetails]="user" (formValueEmitter)="submitValue($event)"></app-user-form>
    </div>
 </div>
 </div>
