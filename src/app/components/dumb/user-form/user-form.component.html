@@ -1,0 +1,24 @@
+<form [formGroup]="postForm">
+   <div class="row">
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-4">
+        <div class="form-container">
+            <h3>{{formTitle}}</h3>
+            <input class="form-control" formControlName="name"/>
+             <input class="form-control" formControlName="age"/>
+             <input class="form-control" formControlName="address"/>
+         
+            <button class="btn btn-primary" (click)="getValue()">Submit</button>
+            <button class="btn btn-info" (click)="clear()">Clear</button>
+        </div>
+      </div>
+   
+     <div class="col-sm-4">
+    </div>
+   
+   
+   
+   </div>
+   
+</form> 
