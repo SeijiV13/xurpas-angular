@@ -1,6 +1,7 @@
+import { GetUsers } from './../../actions/user.actions';
+import { Store } from '@ngxs/store';
 import { UserFormComponent } from './../../dumb/user-form/user-form.component';
 import { User } from './../../../shared/models/User';
-import { UserService } from './../../../components/services/user.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
@@ -11,9 +12,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 export class HomeComponent implements OnInit{
 
   users: User[] = [];
-  @ViewChild("userForm") userForm: UserFormComponent;
+
   selectedUser: User;
-  constructor(private userService: UserService) {}
+  constructor(private store: Store) {}
    
 
    ngOnInit(){
@@ -22,15 +23,9 @@ export class HomeComponent implements OnInit{
    }
 
    getUsers() {
-    this.users = this.userService.getUsers();
+      this.store.dispatch(new GetUsers).subscribe((data) => {});
    }
-
-   setSelectedUser(user) {
-     this.userForm.postForm.patchValue(user);
-
-   }
-
-   
+  
    submitValue(user) {
      console.log(user);
    }

@@ -1,3 +1,4 @@
+import { UserState } from './components/states/user.state';
 import { UserService } from './components/services/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -10,7 +11,7 @@ import { UserFormComponent } from './components/dumb/user-form/user-form.compone
 import { HttpClient, HttpClientModule} from '@angular/common/http';
 import { UserListComponent } from './components/dumb/user-list/user-list.component';
 import { AccordionModule } from 'ngx-bootstrap';
-
+import { NgxsModule } from '@ngxs/store';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,9 @@ import { AccordionModule } from 'ngx-bootstrap';
     FormsModule,
     HttpClientModule,
     AccordionModule.forRoot(),
+    NgxsModule.forRoot([
+      UserState
+    ])
     
   ],
   providers: [
